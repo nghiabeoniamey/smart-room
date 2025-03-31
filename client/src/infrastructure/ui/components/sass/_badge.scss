@@ -1,0 +1,115 @@
+.badge {
+	@apply px-2;
+	@apply py-[0.125rem];
+
+	@apply bg-neutral-200;
+	@apply text-neutral-600;
+
+	@apply rounded-lg;
+
+	@apply text-[0.6215rem];
+
+	&.badge-bordered {
+		@apply border;
+		@apply border-solid;
+	}
+
+	&.badge-light {
+		@apply bg-neutral-200;
+		@apply text-neutral-600;
+
+		&.badge-bordered {
+			@apply bg-transparent;
+			@apply border-neutral-200;
+			@apply text-neutral-600;
+		}
+	}
+
+	&.badge-dark {
+		@apply bg-neutral-600;
+		@apply text-neutral-100;
+
+		&.badge-bordered {
+			@apply bg-transparent;
+			@apply border-neutral-600;
+			@apply text-neutral-600;
+		}
+	}
+
+	&.badge-primary {
+		@apply bg-primary-100;
+		@apply text-primary-600;
+
+		&.badge-bordered {
+			@apply bg-transparent;
+			@apply border-primary-600;
+			@apply text-primary-600;
+		}
+	}
+
+	&.badge-secondary {
+		@apply bg-secondary-100;
+		@apply text-secondary-600;
+
+		&.badge-bordered {
+			@apply bg-transparent;
+			@apply border-secondary-600;
+			@apply text-secondary-600;
+		}
+	}
+
+	&.badge-info {
+		@apply bg-link-100;
+		@apply text-link-600;
+
+		&.badge-bordered {
+			@apply bg-transparent;
+			@apply border-link-600;
+			@apply text-link-600;
+		}
+	}
+
+	&.badge-success {
+		@apply bg-success-100;
+		@apply text-success-600;
+
+		&.badge-bordered {
+			@apply bg-transparent;
+			@apply border-success-600;
+			@apply text-success-600;
+		}
+	}
+
+	&.badge-warning {
+		@apply bg-warning-100;
+		@apply text-warning-600;
+
+		&.badge-bordered {
+			@apply bg-transparent;
+			@apply border-warning-600;
+			@apply text-warning-600;
+		}
+	}
+
+	&.badge-danger {
+		@apply bg-danger-100;
+		@apply text-danger-600;
+
+		&.badge-bordered {
+			@apply bg-transparent;
+			@apply border-danger-600;
+			@apply text-danger-600;
+		}
+	}
+
+	&.badge-link {
+		@apply bg-link-100;
+		@apply text-link-600;
+
+		&.badge-bordered {
+			@apply bg-transparent;
+			@apply border-link-600;
+			@apply text-link-600;
+		}
+	}
+}

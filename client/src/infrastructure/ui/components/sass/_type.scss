@@ -1,0 +1,101 @@
+html {
+  // @apply font-bvp;
+}
+
+body {
+  @apply bg-neutral-50;
+  @apply dark:bg-neutral-800;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+  @apply font-semibold;
+
+  @apply text-neutral-950;
+  @apply dark:text-neutral-100;
+}
+
+p,
+.p {
+  @apply text-neutral-950;
+  @apply dark:text-neutral-300;
+}
+
+h1,
+.h1 {
+  @apply text-[--text-h1];
+}
+
+h2,
+.h2 {
+  @apply text-[--text-h2];
+}
+
+h3,
+.h3 {
+  @apply text-[--text-h3];
+}
+
+h4,
+.h4 {
+  @apply text-[--text-h4];
+}
+
+h5,
+.h5 {
+  @apply text-[--text-h5];
+}
+
+h6,
+.h6 {
+  @apply text-[--text-h6];
+
+  &.h6-md {
+    @apply text-[--text-h6-md];
+  }
+
+  &.h6-sm {
+    @apply text-[--text-h6-sm];
+  }
+}
+
+p {
+  @apply text-p;
+  @apply font-normal;
+
+  &.p-sm {
+    @apply text-[--text-p-sm];
+  }
+
+  &.p-overline {
+    @apply text-[--text-p-overline];
+
+    @apply uppercase;
+  }
+
+  &.p-caption {
+    @apply text-[--text-p-caption];
+  }
+}
+
+label,
+.label {
+  @apply text-neutral-600;
+  @apply dark:text-neutral-400;
+}
+
+input,
+.input {
+  @apply bg-neutral-50 border-neutral-300 hover:border-teal-400 focus:outline-teal-300 active:border-teal-600;
+  @apply dark:bg-neutral-800 dark:border-neutral-700 dark:hover:border-neutral-500 dark:focus:outline-none dark:text-neutral-100;
+}

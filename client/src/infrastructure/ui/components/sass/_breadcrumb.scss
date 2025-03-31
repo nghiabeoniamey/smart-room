@@ -1,0 +1,10 @@
+.breadcrumbs {
+	ul {
+		li {
+			a,
+			p {
+				@apply text-[0.875rem];
+			}
+		}
+	}
+}

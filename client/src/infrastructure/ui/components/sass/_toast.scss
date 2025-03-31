@@ -1,0 +1,62 @@
+.toast {
+  @apply w-full;
+  @apply px-6;
+  @apply py-2;
+  @apply mb-2;
+  @apply last:mb-0;
+  @apply rounded-xl;
+  @apply bg-neutral-200;
+
+  p {
+    @apply text-neutral-400;
+  }
+
+  &.toast-primary {
+    @apply bg-primary-100;
+
+    h6 {
+      @apply text-primary-600;
+    }
+  }
+
+  &.toast-secondary {
+    @apply bg-secondary-100;
+
+    h6 {
+      @apply text-secondary-600;
+    }
+  }
+
+  &.toast-info {
+    @apply bg-link-100;
+
+    h6 {
+      @apply text-link-600;
+    }
+  }
+
+  &.toast-success {
+    @apply bg-success-100;
+
+    h6 {
+      @apply text-success-600;
+    }
+  }
+
+  &.toast-warning {
+    @apply bg-warning-100;
+
+    h6 {
+      @apply text-warning-600;
+    }
+  }
+
+  &.toast-danger {
+    @apply bg-danger-100;
+
+    h6 {
+      @apply text-danger-600;
+    }
+  }
+
+}

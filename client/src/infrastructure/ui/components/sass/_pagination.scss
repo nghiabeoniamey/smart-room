@@ -1,0 +1,25 @@
+.pagination {
+    @apply hidden;
+    &.show {
+        @apply flex;
+		@apply justify-center;
+		@apply items-center;
+    }
+
+    .page-item {
+        .page-link {
+            @apply px-2;
+			@apply py-2;
+
+			@apply text-neutral-600;
+			
+			@apply text-p-caption;
+
+            &.active {
+                @apply font-bold;
+
+                @apply text-primary-600;
+            }
+        }
+    }
+}

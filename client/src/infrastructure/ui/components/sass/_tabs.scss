@@ -1,0 +1,19 @@
+.tabs {
+	@apply flex;
+	@apply justify-start;
+	@apply items-end;
+
+	.btn {
+		@apply px-6;
+		@apply bg-transparent;
+		
+		@apply border-none;
+		@apply border-0;
+
+		@apply rounded-none;
+
+		@apply border-b-2;
+		@apply border-solid;
+		@apply border-b-transparent;
+	}
+}

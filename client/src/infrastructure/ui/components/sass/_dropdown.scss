@@ -1,0 +1,46 @@
+.dropdown {
+	@apply relative;
+}
+
+.dropdown-button {
+	@apply h-full;
+}
+
+.dropdown-menu {
+	@apply min-w-[10rem];
+
+	@apply bg-neutral-200;
+	@apply dark:bg-neutral-800;
+	
+	@apply shadow-md;
+	@apply shadow-neutral-500/50;
+	
+	@apply rounded-xl;
+
+	@apply absolute;
+	@apply z-[--zindex-dropdown];
+}
+
+.dropdown-item {
+	@apply px-3;
+	@apply py-2;
+
+	@apply text-[0.875rem];
+
+	@apply text-neutral-700;
+	@apply dark:text-neutral-300;
+
+	@apply flex;
+	@apply items-center;
+
+	@apply first:rounded-t-xl;
+	@apply last:rounded-b-xl;
+
+	@apply hover:bg-neutral-100;
+	@apply dark:hover:bg-neutral-700;
+
+	&.dropdown-item-active {
+		@apply bg-neutral-400;
+		@apply dark:bg-neutral-600;
+	}
+}

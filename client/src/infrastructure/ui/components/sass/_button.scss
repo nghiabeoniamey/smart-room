@@ -1,0 +1,425 @@
+.btn {
+	@apply min-h-[auto];
+	// @apply min-h-[unset];
+	@apply min-h-[calc(0.875rem+2*0.25rem)];
+
+	@apply px-4;
+	@apply py-2;
+
+	@apply text-p-sm;
+
+	@apply bg-neutral-200;
+	@apply border-neutral-200;
+	@apply text-neutral-800;
+
+	@apply hover:bg-neutral-100;
+	@apply hover:border-neutral-100;
+	@apply hover:text-neutral-800;
+
+	@apply dark:bg-neutral-800;
+	@apply dark:border-neutral-800;
+	@apply dark:text-neutral-200;
+
+	@apply dark:hover:bg-neutral-700;
+	@apply dark:hover:border-neutral-700;
+	@apply dark:hover:text-neutral-200;
+
+	@apply rounded-xl;
+	@apply border;
+	@apply border-solid;
+
+	@apply flex;
+	@apply justify-center;
+	@apply items-center;
+
+	@apply transition-all;
+	@apply duration-300;
+
+	&:disabled,
+	&.disabled {
+		@apply text-neutral-400;
+		@apply dark:text-neutral-600;
+
+		@apply opacity-40;
+	}
+
+	&.btn-sm {
+		@apply min-h-[calc(0.75rem+2*0.25rem)];
+		
+		@apply px-2;
+		@apply py-1;
+
+		@apply text-p-caption;
+	}
+
+	&.btn-dashed {
+		@apply bg-transparent;
+		@apply hover:bg-transparent;
+
+		@apply border-dashed;
+	}
+
+	&.btn-bordered {
+		@apply border-solid;
+	}
+
+	&.btn-ban {
+		@apply relative;
+
+		&.banned {
+			@apply after:absolute;
+
+			@apply after:w-[20px];
+			@apply after:h-[2px];
+
+			@apply after:bg-danger-600;
+
+			@apply after:top-1/2;
+			@apply after:left-1/2;
+			@apply after:z-10;
+
+			@apply after:-rotate-45;
+			@apply after:-translate-x-1/2;
+			@apply after:-translate-y-1/2;
+		}
+	}
+
+	&.btn-transparent {
+		@apply bg-transparent;
+		@apply border-transparent;
+	
+		@apply hover:bg-transparent;
+		@apply hover:border-transparent;
+
+		&.btn-dashed,
+		&.btn-bordered {
+			@apply border-neutral-800;
+			@apply dark:border-neutral-200;
+		}
+	}
+
+	&.btn-light {
+		@apply bg-neutral-200;
+		@apply dark:bg-neutral-800;
+		@apply border-neutral-200;
+		@apply dark:border-neutral-800;
+		@apply text-neutral-800;
+		@apply dark:text-neutral-200;
+
+		@apply hover:bg-neutral-100;
+		@apply dark:hover:bg-neutral-900;
+		@apply hover:border-neutral-100;
+		@apply dark:hover:border-neutral-900;
+		@apply hover:text-neutral-600;
+		@apply dark:hover:text-neutral-400;
+
+		&.btn-dashed,
+		&.btn-bordered {
+			@apply bg-transparent;
+			@apply border-transparent;
+			@apply text-neutral-800;
+			@apply dark:text-neutral-200;
+
+			@apply hover:bg-neutral-800;
+			@apply dark:hover:bg-neutral-200;
+			@apply hover:border-neutral-800;
+			@apply dark:hover:border-neutral-200;
+			@apply hover:text-neutral-800;
+			@apply dark:hover:text-neutral-200;
+		}
+
+		&:disabled,
+		&.disabled {
+			@apply bg-neutral-400;
+			@apply dark:bg-neutral-600;
+			@apply border-neutral-400;
+			@apply dark:border-neutral-600;
+			@apply text-neutral-600;
+			@apply dark:text-neutral-400;
+
+			@apply hover:bg-neutral-400;
+			@apply dark:hover:bg-neutral-600;
+			@apply hover:border-neutral-400;
+			@apply dark:hover:border-neutral-600;
+			@apply hover:text-neutral-400;
+			@apply dark:hover:text-neutral-600;
+		}
+	}
+
+	&.btn-dark {
+		@apply bg-neutral-800;
+		@apply dark:bg-neutral-200;
+		@apply border-neutral-800;
+		@apply dark:border-neutral-200;
+		@apply text-neutral-200;
+		@apply dark:text-neutral-800;
+
+		@apply hover:bg-neutral-900;
+		@apply dark:hover:bg-neutral-100;
+		@apply hover:border-neutral-900;
+		@apply dark:hover:border-neutral-100;
+		@apply hover:text-neutral-400;
+		@apply dark:hover:text-neutral-600;
+
+		&.btn-dashed,
+		&.btn-bordered {
+			@apply bg-transparent;
+			@apply border-transparent;
+			@apply text-neutral-800;
+			@apply dark:text-neutral-200;
+
+			@apply hover:bg-neutral-200;
+			@apply dark:hover:bg-neutral-800;
+			@apply hover:border-neutral-200;
+			@apply dark:hover:border-neutral-800;
+			@apply hover:text-neutral-200;
+			@apply dark:hover:text-neutral-800;
+		}
+
+		&:disabled,
+		&.disabled {
+			@apply bg-neutral-600;
+			@apply dark:bg-neutral-400;
+			@apply border-neutral-600;
+			@apply dark:border-neutral-400;
+			@apply text-neutral-400;
+			@apply dark:text-neutral-600;
+
+			@apply hover:bg-neutral-600;
+			@apply dark:hover:bg-neutral-400;
+			@apply hover:border-neutral-600;
+			@apply dark:hover:border-neutral-400;
+			@apply hover:text-neutral-600;
+			@apply dark:hover:text-neutral-400;
+		}
+	}
+
+	&.btn-primary {
+		@apply bg-primary-600;
+		@apply border-primary-600;
+		@apply text-neutral-100;
+
+		@apply hover:bg-primary-400;
+		@apply hover:border-primary-400;
+		@apply hover:text-neutral-50;
+
+		&.btn-dashed,
+		&.btn-bordered {
+			@apply bg-transparent;
+			@apply border-primary-600;
+			@apply text-primary-600;
+
+			@apply hover:bg-primary-400;
+			@apply hover:border-primary-400;
+			@apply hover:text-neutral-50;
+		}
+
+		&:disabled,
+		&.disabled {
+			@apply bg-primary-400;
+			@apply border-primary-400;
+			@apply text-neutral-100;
+
+			@apply hover:bg-primary-600;
+			@apply hover:border-primary-600;
+			@apply hover:text-neutral-50;
+		}
+	}
+
+	&.btn-secondary {
+		@apply bg-secondary-600;
+		@apply border-secondary-600;
+		@apply text-neutral-100;
+
+		@apply hover:bg-secondary-400;
+		@apply hover:border-secondary-400;
+		@apply hover:text-neutral-50;
+
+		&.btn-dashed,
+		&.btn-bordered {
+			@apply bg-transparent;
+			@apply border-secondary-600;
+			@apply text-secondary-600;
+
+			@apply hover:bg-secondary-400;
+			@apply hover:border-secondary-400;
+			@apply hover:text-neutral-50;
+		}
+
+		&:disabled,
+		&.disabled {
+			@apply bg-secondary-400;
+			@apply border-secondary-400;
+			@apply text-neutral-100;
+
+			@apply hover:bg-secondary-600;
+			@apply hover:border-secondary-600;
+			@apply hover:text-neutral-50;
+		}
+	}
+
+	&.btn-info {
+		@apply bg-link-600;
+		@apply border-link-600;
+		@apply text-neutral-100;
+
+		@apply hover:bg-link-400;
+		@apply hover:border-link-400;
+		@apply hover:text-neutral-50;
+
+		&.btn-dashed,
+		&.btn-bordered {
+			@apply bg-transparent;
+			@apply border-link-600;
+			@apply text-link-600;
+
+			@apply hover:bg-link-400;
+			@apply hover:border-link-400;
+			@apply hover:text-neutral-50;
+		}
+
+		&:disabled,
+		&.disabled {
+			@apply bg-link-400;
+			@apply border-link-400;
+			@apply text-neutral-100;
+
+			@apply hover:bg-link-600;
+			@apply hover:border-link-600;
+			@apply hover:text-neutral-50;
+		}
+	}
+
+	&.btn-success {
+		@apply bg-success-600;
+		@apply border-success-600;
+		@apply text-neutral-100;
+
+		@apply hover:bg-success-400;
+		@apply hover:border-success-400;
+		@apply hover:text-neutral-50;
+
+		&.btn-dashed,
+		&.btn-bordered {
+			@apply bg-transparent;
+			@apply border-success-600;
+			@apply text-success-600;
+
+			@apply hover:bg-success-400;
+			@apply hover:border-success-400;
+			@apply hover:text-neutral-50;
+		}
+
+		&:disabled,
+		&.disabled {
+			@apply bg-success-400;
+			@apply border-success-400;
+			@apply text-neutral-100;
+
+			@apply hover:bg-success-600;
+			@apply hover:border-success-600;
+			@apply hover:text-neutral-50;
+		}
+	}
+
+	&.btn-warning {
+		@apply bg-warning-600;
+		@apply border-warning-600;
+		@apply text-neutral-100;
+
+		@apply hover:bg-warning-400;
+		@apply hover:border-warning-400;
+		@apply hover:text-neutral-50;
+
+		&.btn-dashed,
+		&.btn-bordered {
+			@apply bg-transparent;
+			@apply border-warning-600;
+			@apply text-warning-600;
+
+			@apply hover:bg-warning-400;
+			@apply hover:border-warning-400;
+			@apply hover:text-neutral-50;
+		}
+
+		&:disabled,
+		&.disabled {
+			@apply bg-warning-400;
+			@apply border-warning-400;
+			@apply text-neutral-100;
+
+			@apply hover:bg-warning-600;
+			@apply hover:border-warning-600;
+			@apply hover:text-neutral-50;
+		}
+	}
+
+	&.btn-danger {
+		@apply bg-danger-600;
+		@apply border-danger-600;
+		@apply text-neutral-100;
+
+		@apply hover:bg-danger-400;
+		@apply hover:border-danger-400;
+		@apply hover:text-neutral-50;
+
+		&.btn-dashed,
+		&.btn-bordered {
+			@apply bg-transparent;
+			@apply border-danger-600;
+			@apply text-danger-600;
+
+			@apply hover:bg-danger-400;
+			@apply hover:border-danger-400;
+			@apply hover:text-neutral-50;
+		}
+
+		&:disabled,
+		&.disabled {
+			@apply bg-danger-400;
+			@apply border-danger-400;
+			@apply text-neutral-100;
+
+			@apply hover:bg-danger-600;
+			@apply hover:border-danger-600;
+			@apply hover:text-neutral-50;
+		}
+	}
+}
+
+.btn-group {
+	@apply flex;
+	@apply justify-start;
+	@apply items-center;
+
+	.dropdown {
+		&:only-child {
+			.btn {
+				@apply rounded-xl;
+			}
+		}
+
+		&:first-child {
+			.btn {
+				@apply rounded-r-none;
+			}
+		}
+
+		&:last-child {
+			.btn {
+				@apply rounded-l-none;
+			}
+		}
+	}
+
+	.btn {
+		@apply rounded-none;
+		
+		@apply first:rounded-l-xl;
+		@apply last:rounded-r-xl;
+
+		&:not(:first-child) {
+			@apply -ml-px;
+		}
+	}
+}

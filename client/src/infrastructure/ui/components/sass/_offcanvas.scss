@@ -1,0 +1,112 @@
+.offcanvas {
+	@apply w-screen;
+	@apply h-screen;
+
+	@apply absolute;
+	@apply bottom-0;
+	@apply right-0;
+	@apply z-[--zindex-offcanvas];
+
+	@apply transition-all;
+	@apply duration-300;
+
+	@apply hidden;
+
+	&.show {
+		@apply block;
+
+		.wrapper {
+			.inner {
+				@apply translate-x-0;
+			}
+			
+			.offcanvas-backdrop {
+				@apply opacity-100;
+			}
+		}
+	}
+
+	.wrapper {
+		@apply w-full;
+		@apply h-full;
+
+		@apply flex;
+		@apply justify-end;
+
+		@apply relative;
+		@apply z-10;
+
+		@apply transition-all;
+		@apply duration-300;
+		@apply delay-200;
+
+		.inner {
+			@apply w-[calc(100%/3)];
+			@apply h-full;
+
+			@apply bg-neutral-50;
+
+			@apply translate-x-full;
+
+			@apply flex;
+			@apply flex-col;
+		}
+	}
+
+	.offcanvas-backdrop {
+		@apply w-screen;
+		@apply h-screen;
+
+		@apply bg-neutral-700/70;
+		@apply backdrop-blur-sm;
+
+		@apply absolute;
+		@apply bottom-0;
+		@apply left-0;
+		@apply -z-[1];
+
+		@apply opacity-0;
+
+		@apply transition-all;
+		@apply duration-300;
+		@apply delay-200;
+	}
+
+	.offcanvas-header {
+		@apply w-full;
+
+		@apply px-3;
+		@apply py-6;
+
+		@apply grow-0;
+		@apply shrink-0;
+
+		@apply flex;
+		@apply justify-between;
+		@apply items-center;
+	}
+
+	.offcanvas-body {
+		@apply w-full;
+
+		@apply px-3;
+		@apply py-3;
+
+		@apply grow;
+		@apply shrink;
+	}
+
+	.offcanvas-footer {
+		@apply w-full;
+
+		@apply px-3;
+		@apply py-6;
+
+		@apply grow-0;
+		@apply shrink-0;
+
+		@apply flex;
+		@apply justify-between;
+		@apply items-center;
+	}
+}
