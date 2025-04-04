@@ -1,6 +1,7 @@
 'use client'
 
-import {StudentSidebar} from '@/infrastructure/ui/fragment/student/Sidebar';
+import {StudentSidebar} from '@/infrastructure/components/student/Sidebar';
+import {ActorHeader} from "@/infrastructure/components/common/ActorHeader";
 
 export default function StudentLayout({
                                           children,
@@ -9,6 +10,7 @@ export default function StudentLayout({
 }) {
     return (
         <div className="flex">
+            <ActorHeader/>
             <StudentSidebar/>
             {children}
         </div>

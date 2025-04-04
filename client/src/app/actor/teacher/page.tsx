@@ -1,7 +1,7 @@
 'use client'
 
 export default function TeacherPage() {
-    return <div className="bg-white grid w-full h-[calc(100vh)] justify-center items-center">
-        <h1 className={"text-3xl text-black font-bold p-42 bg-gray-200"}>Hello, This is TeacherPage!</h1>
+    return <div className="grid w-full h-[calc(100vh)] justify-start pt-20">
+        <h1 className={"text-3xl text-black font-bold ps-10"}>Dashboard Teacher...</h1>
     </div>
 }

@@ -1,0 +1,13 @@
+.sidebar {
+  @apply bg-[#2D8692];
+
+  li {
+    @apply hover:text-[#45C9DE] text-neutral-100;
+  }
+
+  button {
+    @apply bg-[#45C9DE] text-neutral-50 cursor-pointer hover:bg-[#45C9DE];
+
+  }
+
+}

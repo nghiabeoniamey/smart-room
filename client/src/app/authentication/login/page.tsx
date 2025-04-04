@@ -5,9 +5,10 @@ import Logo from "@/infrastructure/assets/icon/eduliveicon.svg";
 import {useState} from "react";
 import {LoginForm} from "@/infrastructure/services/api/authentication/authentication.api";
 import {useLogin} from "@/infrastructure/services/service/authentication/authentication.action";
-import {URL_FRONTEND} from "@/infrastructure/constants/url";
+import {URL_FRONTEND, URL_OAUTH2_GOOGLE} from "@/infrastructure/constants/url";
 import {AxiosError} from "axios";
-import {useToast} from "@/infrastructure/context/ToastContext";
+import {useToast} from "@/infrastructure/providers/context/ToastContext";
+import {TOAST_TYPE} from "@/infrastructure/types/toast.type";
 
 export default function Page() {
     const {mutate: login, isPending} = useLogin();
@@ -51,18 +52,20 @@ export default function Page() {
                                 title: 'Thông báo!',
                                 description: 'Đăng nhập thành công',
                             },
-                            'success'
+                            TOAST_TYPE.SUCCESS
                         )
                         window.location.href = `${URL_FRONTEND}?state=${result.data}`;
                     }
                     if (result instanceof AxiosError) {
-                        showToast(
-                            {
-                                title: 'Thông báo!',
-                                description: result?.response?.data?.message
-                            },
-                            'warning'
-                        )
+                        if (result?.response) {
+                            showToast(
+                                {
+                                    title: 'Thông báo!',
+                                    description: result?.response?.data?.message
+                                },
+                                TOAST_TYPE.WARNING
+                            )
+                        }
                     }
                 },
                 onError: (error) => {
@@ -72,7 +75,7 @@ export default function Page() {
                             title: 'Lỗi hệ thống!',
                             description: error?.response?.data?.message || "Đăng nhập thất bại!"
                         },
-                        'success',
+                        TOAST_TYPE.DANGER,
                         3000
                     )
                 },
@@ -82,13 +85,13 @@ export default function Page() {
         }
     };
 
-    // const handleLoginGoogle = () => {
-    //     console.log(
-    //         "URL_OAUTH2_GOOGLE + URL_FRONTEND",
-    //         URL_OAUTH2_GOOGLE + URL_FRONTEND
-    //     );
-    //     window.location.href = URL_OAUTH2_GOOGLE + URL_FRONTEND;
-    // };
+    const handleLoginGoogle = () => {
+        console.log(
+            "URL_OAUTH2_GOOGLE + URL_FRONTEND",
+            URL_OAUTH2_GOOGLE + URL_FRONTEND
+        );
+        window.location.href = URL_OAUTH2_GOOGLE + URL_FRONTEND;
+    };
 
     return (
         <div className="grid w-full h-[calc(100vh)] justify-center items-center pb-40">
@@ -169,14 +172,14 @@ export default function Page() {
                                 </>
                             ) : 'Login'}
                         </button>
-                        {/*<button*/}
-                        {/*    type="button"*/}
-                        {/*    className="p-2 border-1 rounded-2xl text-gray-900"*/}
-                        {/*    disabled={isPending}*/}
-                        {/*    onClick={handleLoginGoogle}*/}
-                        {/*>*/}
-                        {/*    Google*/}
-                        {/*</button>*/}
+                        <button
+                            type="button"
+                            className="p-2 border-1 rounded-2xl text-gray-900"
+                            disabled={isPending}
+                            onClick={handleLoginGoogle}
+                        >
+                            Google
+                        </button>
                     </form>
                 </div>
             </div>

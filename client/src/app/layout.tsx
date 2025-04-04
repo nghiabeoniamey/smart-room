@@ -1,10 +1,8 @@
 'use client'
 
 import "@/app/globals.scss";
-import {Header} from "@/infrastructure/ui/fragment/home/Header";
-import {Footer} from "@/infrastructure/ui/fragment/home/Footer";
 import {TanstackProvider} from "@/infrastructure/providers/TanstackProvider";
-import {ToastProvider} from "@/infrastructure/context/ToastContext";
+import {ToastProvider} from "@/infrastructure/providers/context/ToastContext";
 import StoreProvider from "@/infrastructure/providers/StoreProvider";
 
 export default function RootLayout({children}: { children: React.ReactNode }) {
@@ -21,9 +19,7 @@ export default function RootLayout({children}: { children: React.ReactNode }) {
             <TanstackProvider>
                 {/*toast config*/}
                 <ToastProvider>
-                    <Header/>
                     {children}
-                    <Footer/>
                 </ToastProvider>
             </TanstackProvider>
         </StoreProvider>

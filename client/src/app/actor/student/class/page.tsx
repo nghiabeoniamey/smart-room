@@ -1,20 +1,18 @@
 'use client'
 
 import {useState} from 'react';
-import {IRoom, sampleIRooms, sampleTPRooms, TABS, TPRoom} from "@/infrastructure/types/class.type";
-import {IconCalendarWeek, IconHourglassHigh, IconNumber, IconPlaylist} from "@tabler/icons-react";
+import {IRoom, sampleIRooms, sampleSPRooms, TABS} from "@/infrastructure/types/class.type";
+import {IconCalendarWeek, IconHourglassHigh, IconNumber} from "@tabler/icons-react";
 import {useToast} from "@/infrastructure/providers/context/ToastContext";
 import {POSITION, TOAST_TYPE} from "@/infrastructure/types/toast.type";
 import Link from "next/link";
-import {AudioListModal} from "@/infrastructure/components/teacher/AudioListModal";
 
-export default function TeacherClassesPage() {
+export default function StudentClassesPage() {
     const [activeTab, setActiveTab] = useState(TABS.INCOMING);
     const {showToast} = useToast();
-    const [roomId, setRoomId] = useState<string>('');
 
     const [iRooms, setIRooms] = useState<IRoom[]>(sampleIRooms);
-    const [pRooms, setPRooms] = useState<TPRoom[]>(sampleTPRooms);
+    const [pRooms, setPRooms] = useState<IRoom[]>(sampleSPRooms);
 
     const copyClipboard = (code: string) => {
         navigator.clipboard.writeText(code).then(() => {
@@ -23,17 +21,6 @@ export default function TeacherClassesPage() {
                 description: `Copy to clipboard: ${code}`,
             }, TOAST_TYPE.INFO, 3000, POSITION.TOP_CENTER)
         });
-    }
-
-    const [isOpenModal, setIsOpenModal] = useState(false);
-
-    const handleCloseModal = () => {
-        setIsOpenModal(false);
-    }
-
-    const handleOpenModal = (roomId: string) => {
-        setRoomId(roomId);
-        setIsOpenModal(true);
     }
 
     return (
@@ -91,8 +78,8 @@ export default function TeacherClassesPage() {
                     <div className="grid gap-6 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1">
                         {iRooms.map((room, index) => (
                             <div key={index}
-                                 className="p-4 border grid gap-6 rounded-lg border-neutral-300 shadow-sm bg-white gap-3
-                                  grid-cols-1 hover:shadow-xl">
+                                 className="overflow-hidden p-4 border grid gap-6 rounded-lg border-neutral-300
+                                 shadow-sm bg-white gap-3 grid-cols-1 hover:shadow-lg">
                                 <Link href={`/actor/teacher/class/` + room.code}
                                       className="text-md truncate font-bold">{room.title}</Link>
                                 <div className="grid gap-4 text-sm">
@@ -101,7 +88,7 @@ export default function TeacherClassesPage() {
                                         <span>
                                             {room.code} -
                                             <a
-                                                title='copy room code'
+                                                title='coppy mã room'
                                                 onClick={() => copyClipboard(room.code)}
                                                 className={"text-[#2D8692] border-[#2D8692] dark:text-[#2D8692] dark:border-[#2D8692] ml-1 cursor-pointer font-bold"}
                                             >
@@ -133,32 +120,10 @@ export default function TeacherClassesPage() {
                         {pRooms.map((room, index) => (
                             <div key={index}
                                  className="p-4 border grid gap-6 rounded-lg border-neutral-300 shadow-sm bg-white gap-3
-                                  grid-cols-1 hover:shadow-xl">
-                                <div className={"flex items-center justify-between gap-3 font-bold"}>
-                                    <Link href={`/actor/teacher/class/` + room.code}
-                                          className="text-md truncate">{room.title}</Link>
-                                    <div
-                                        className={"flex items-center justify-end gap-1 w-[10rem] text-sm cursor-pointer"}
-                                        onClick={() => handleOpenModal(room.code)}
-                                    >
-                                        <span><IconPlaylist size={'1.2rem'} color={'#2D8692'}/></span>
-                                        <span className={"text-[0.8rem] text-neutral-600"}>Audio record</span>
-                                    </div>
-                                </div>
+                                  grid-cols-1 hover:shadow-lg">
+                                <Link href={`/actor/teacher/class/` + room.code}
+                                      className="text-md truncate font-bold">{room.title}</Link>
                                 <div className="grid gap-4 text-sm">
-                                    <div className={"flex items-center gap-3"}>
-                                        <span><IconNumber/></span>
-                                        <span>
-                                            {room.code} -
-                                            <a
-                                                title='copy room code'
-                                                onClick={() => copyClipboard(room.code)}
-                                                className={"text-[#2D8692] border-[#2D8692] dark:text-[#2D8692] dark:border-[#2D8692] ml-1 cursor-pointer font-bold"}
-                                            >
-                                                Copy
-                                            </a>
-                                        </span>
-                                    </div>
                                     <div className={"flex items-center gap-3"}>
                                         <span><IconHourglassHigh/></span>
                                         <span>{room.duration}'</span>
@@ -173,11 +138,6 @@ export default function TeacherClassesPage() {
                     </div>
                 </div>
             </div>
-            <AudioListModal
-                isOpen={isOpenModal}
-                onCancel={handleCloseModal}
-                data={roomId}
-            />
         </div>
     );
 }

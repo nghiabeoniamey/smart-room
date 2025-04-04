@@ -2,11 +2,12 @@
 
 import {useRouter, useSearchParams} from "next/navigation";
 import {getUserInformation} from "@/infrastructure/util/token.helper";
-import {useToast} from "@/infrastructure/context/ToastContext";
+import {useToast} from "@/infrastructure/providers/context/ToastContext";
 import {useDispatch} from "react-redux";
 import {login} from "@/infrastructure/stores/authSlice";
 import {ROLES} from "@/infrastructure/constants/role";
 import {useEffect} from "react";
+import {TOAST_TYPE} from "@/infrastructure/types/toast.type";
 
 export default function RedirectPage() {
 
@@ -36,7 +37,7 @@ export default function RedirectPage() {
                         router.push("/actor/admin");
                         break;
                     case ROLES.TEACHER:
-                        router.push("/actor/student");
+                        router.push("/actor/teacher");
                         break;
                     case ROLES.STUDENT:
                         router.push("/actor/student");
@@ -55,7 +56,7 @@ export default function RedirectPage() {
             showToast({
                 title: "Thông báo",
                 description: error,
-            }, 'danger');
+            }, TOAST_TYPE.DANGER);
         }
     }, [error, showToast]);
 

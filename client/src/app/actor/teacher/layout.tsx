@@ -1,6 +1,7 @@
 'use client'
 
-import {TeacherSidebar} from "@/infrastructure/ui/fragment/teacher/Sidebar";
+import {TeacherSidebar} from "@/infrastructure/components/teacher/Sidebar";
+import {ActorHeader} from "@/infrastructure/components/common/ActorHeader";
 
 export default function TeacherLayout({
                                           children,
@@ -9,10 +10,9 @@ export default function TeacherLayout({
 }) {
     return (
         <div className="flex">
+            <ActorHeader/>
             <TeacherSidebar/>
-            <main className="flex-1 ml-64 p-6">
-                {children}
-            </main>
+            {children}
         </div>
     );
 }

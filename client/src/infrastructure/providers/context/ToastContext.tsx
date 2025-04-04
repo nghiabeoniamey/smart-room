@@ -2,7 +2,15 @@
 
 import {createContext, ReactNode, useContext, useState} from 'react';
 import Toast from "@/infrastructure/ui/components/toast/Toast";
-import {ToastContextType, ToastItem, ToastMessage, ToastType} from "@/infrastructure/types/toast.type";
+import {
+    POSITION,
+    TOAST_TYPE,
+    ToastContextType,
+    ToastItem,
+    ToastMessage,
+    ToastPosition,
+    ToastType
+} from "@/infrastructure/types/toast.type";
 
 const ToastContext = createContext<ToastContextType | undefined>(undefined);
 
@@ -11,15 +19,17 @@ export const ToastProvider = ({children}: {
 }) => {
     const [toasts, setToasts] = useState<ToastItem[]>([]);
 
-    const showToast = (message: ToastMessage, type: ToastType = 'info', duration: number = 5000) => {
+    const showToast = (message: ToastMessage, type: ToastType = TOAST_TYPE.INFO, duration: number = 5000, position: ToastPosition = POSITION.TOP_RIGHT) => {
         const id = Date.now();
-        setToasts((prevToasts) => [...prevToasts, {id, message, type, duration}]);
+        const newToast = {id, message, type, duration, position}
+        setToasts((prevToasts) => [...prevToasts, newToast]);
 
         if (duration) {
             setTimeout(() => {
                 removeToast(id);
             }, duration);
         }
+
     };
 
     const removeToast = (id: number) => {
@@ -36,6 +46,7 @@ export const ToastProvider = ({children}: {
                         message={toast.message}
                         type={toast.type}
                         duration={toast.duration}
+                        position={toast.position}
                         onClose={() => removeToast(toast.id)}
                         index={index}
                     />

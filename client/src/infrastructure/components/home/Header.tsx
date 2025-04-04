@@ -6,7 +6,7 @@ export const Header = () => {
 
     return (
         <header>
-            <nav className="fixed mx-auto flex w-full items-center justify-between p-3 lg:px-50 bg-white shadow-sm z-50"
+            <nav className="fixed mx-auto flex w-full items-center justify-between p-3 lg:px-80 bg-white shadow-sm z-50"
                  aria-label="Global">
 
                 <Link href="/public">
@@ -22,11 +22,11 @@ export const Header = () => {
                         Sign In
                     </Link>
 
-                    <Link href={"/authentication/register"}
-                          className="px-3 py-2 bg-amber-500 hover:bg-amber-600 rounded-xl text-white transition-colors duration-300 cursor-pointer"
-                    >
-                        Register
-                    </Link>
+                    {/*<Link href={"/authentication/register"}*/}
+                    {/*      className="px-3 py-2 bg-amber-500 hover:bg-amber-600 rounded-xl text-white transition-colors duration-300 cursor-pointer"*/}
+                    {/*>*/}
+                    {/*    Register*/}
+                    {/*</Link>*/}
                 </div>
             </nav>
         </header>

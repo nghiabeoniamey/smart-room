@@ -3,7 +3,7 @@ html {
 }
 
 body {
-  @apply bg-neutral-50;
+  @apply bg-neutral-100;
   @apply dark:bg-neutral-800;
 }
 
@@ -86,6 +86,12 @@ p {
   &.p-caption {
     @apply text-[--text-p-caption];
   }
+}
+
+li,
+.li {
+  @apply text-neutral-950;
+  @apply dark:text-neutral-300;
 }
 
 label,
