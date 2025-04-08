@@ -1,43 +1,40 @@
 'use client'
 
-import Link from 'next/link';
-import {useAuth} from "@/infrastructure/hooks/useAuth";
 import {useRouter} from "next/navigation";
-import {useCallback, useEffect, useState} from "react";
+import Link from 'next/link';
 import Image from "next/image";
+import {useCallback, useEffect, useState} from "react";
 import Logo from "@/infrastructure/assets/icon/edulivelighticon.svg";
 import VietNamFlag from "@/infrastructure/assets/icon/flag/vietnam.png";
 import GreatBritainFlag from "@/infrastructure/assets/icon/flag/united-kingdom.png";
+import {useAuth} from "@/infrastructure/stores/hooks/useAuth";
 import {IconLogout2} from "@tabler/icons-react";
 import {logout} from "@/infrastructure/stores/authSlice";
 import {useDispatch} from "react-redux";
-import {useToast} from "@/infrastructure/providers/context/ToastContext";
-import {POSITION, TOAST_TYPE} from "@/infrastructure/types/toast.type";
+import {setUserLocale} from "@/i18n/locale";
+import {Locale, locales} from "@/i18n/config";
+import {useTranslations} from "next-intl";
+import {URL_AUTH_LOGIN} from "@/infrastructure/constants/path";
 
 export const ActorHeader = () => {
+
+    const t = useTranslations('Landing.Actor.Header');
 
     const [isRender, setIsRender] = useState<boolean>(false);
     const router = useRouter();
     const dispatch = useDispatch();
     const {user, isAuthenticated} = useAuth();
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-    const {showToast} = useToast();
 
     const handleLogout = useCallback(() => {
-        router.push('/authentication/login');
+        router.push(URL_AUTH_LOGIN);
         dispatch(logout());
     }, [dispatch, router]);
 
-    const handleChangeLanguage = (type: string) => {
-        switch (type) {
-            case 'en':
-            case 'vn':
-            default:
-        }
-        showToast({
-            title: "Language",
-            description: "Language: " + type,
-        }, TOAST_TYPE.INFO, 5000, POSITION.TOP_CENTER);
+    const handleChangeLanguage = (type: Locale) => {
+        setUserLocale(type).then(() => {
+
+        })
     }
 
     useEffect(() => {
@@ -59,7 +56,7 @@ export const ActorHeader = () => {
                 <Link href="/">
                     <h1 className="font-bold text-neutral-800 hover:text-purple-700 transition-colors duration-300
                     cursor-pointer ms-[18rem]">
-                        Welcome back!
+                        {t('title')}
                     </h1>
                 </Link>
 
@@ -93,12 +90,12 @@ export const ActorHeader = () => {
                                         <span className="w-6 h-6 rounded-full flex items-center justify-center">
                                             <IconLogout2 size={30}/>
                                         </span>
-                                        Logout
+                                        {t('account.logout')}
                                     </li>
                                     <li
                                         className={"text-neutral-300 flex justify-start items-center gap-4 ps-4 p-3 " +
                                             "cursor-pointer hover:bg-neutral-600"}
-                                        onClick={() => handleChangeLanguage('en')}
+                                        onClick={() => handleChangeLanguage(locales[0])}
                                     >
                                         <span className="w-6 h-6 rounded-full flex items-center justify-center">
                                           <Image
@@ -107,12 +104,12 @@ export const ActorHeader = () => {
                                               alt={'GreatBritainFlag'}
                                           />
                                         </span>
-                                        Tiếng Anh
+                                        {t('account.english')}
                                     </li>
                                     <li
                                         className={"text-neutral-300 flex justify-start items-center gap-4 ps-4 p-3 " +
                                             "cursor-pointer hover:bg-neutral-600 rounded-b-lg"}
-                                        onClick={() => handleChangeLanguage('vn')}
+                                        onClick={() => handleChangeLanguage(locales[1])}
                                     >
                                         <span className="w-6 h-6 rounded-full flex items-center justify-center">
                                           <Image
@@ -121,7 +118,7 @@ export const ActorHeader = () => {
                                               alt={'VietNamFlag'}
                                           />
                                         </span>
-                                        Tiếng Việt
+                                        {t('account.vietnam')}
                                     </li>
                                 </ul>
                             </div>

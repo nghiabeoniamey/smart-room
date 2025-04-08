@@ -1,0 +1,108 @@
+{
+  "Landing": {
+    "title": "Xin chào, Đây là Trang Chủ!",
+    "Auth": {
+      "title": "Chào mừng!, Đây là Trang Xác Thực!",
+      "Common": {
+        "Header": {
+          "title": "Đây là Phần Đầu Trang",
+          "btnSignIn": "Đăng Nhập"
+        },
+        "Footer": {
+          "title": "Đây là Phần Chân Trang"
+        }
+      },
+      "Login": {
+        "form": {
+          "title": "Đăng nhập",
+          "labelEmail": "Email",
+          "placeholderEmail": "Nhập email của bạn",
+          "labelPassword": "Mật khẩu",
+          "placeholderPassword": "Nhập mật khẩu của bạn",
+          "labelRememberMe": "Ghi nhớ đăng nhập?",
+          "btnLogin": "Đăng nhập",
+          "btnGoogle": "Google"
+        },
+        "message": {
+          "validFills": "Vui lòng điền đầy đủ thông tin",
+          "validEmail": "Vui lòng nhập địa chỉ email hợp lệ",
+          "err": "Đã xảy ra lỗi không mong muốn"
+        }
+      }
+    },
+    "Actor": {
+      "Header": {
+        "title": "Chào mừng trở lại!",
+        "account": {
+          "logout": "Đăng xuất",
+          "english": "Tiếng Anh",
+          "vietnam": "Tiếng Việt"
+        }
+      },
+      "Teacher": {
+        "Sidebar": {
+          "btnCreate": "Tạo phòng",
+          "dashboard": "Bảng điều khiển",
+          "classes": "Lớp học",
+          "config": "Cài đặt"
+        },
+        "Dashboard": {
+          "title": "Bảng điều khiển Giáo viên..."
+        },
+        "Config": {
+          "title": "Cài đặt Giáo viên..."
+        },
+        "Classes": {
+          "title": "Phòng học trực tuyến",
+          "placeholderSearch": "Tìm kiếm",
+          "copy": "Sao chép",
+          "message": {
+            "copy": {
+              "title": "Đã sao chép",
+              "description": "Mã đã được sao chép vào bộ nhớ tạm: "
+            }
+          },
+          "incoming": {
+            "title": "Sắp diễn ra"
+          },
+          "passed": {
+            "title": "Đã qua",
+            "record": "Ghi âm"
+          }
+        }
+      },
+      "Learner": {
+        "Sidebar": {
+          "btnJoin": "Tham gia phòng",
+          "dashboard": "Bảng điều khiển",
+          "classes": "Lớp học",
+          "config": "Cài đặt"
+        },
+        "Dashboard": {
+          "title": "Bảng điều khiển Học viên..."
+        },
+        "Config": {
+          "title": "Cài đặt Học viên..."
+        },
+        "Classes": {
+          "title": "Phòng học trực tuyến",
+          "placeholderSearch": "Tìm kiếm",
+          "copy": "Sao chép",
+          "message": {
+            "copy": {
+              "title": "Đã sao chép",
+              "description": "Mã đã được sao chép vào bộ nhớ tạm: "
+            }
+          },
+          "incoming": {
+            "title": "Sắp diễn ra"
+          },
+          "passed": {
+            "title": "Đã qua",
+            "record": "Ghi âm"
+          }
+        }
+      }
+    }
+  }
+}

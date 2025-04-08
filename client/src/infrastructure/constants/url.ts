@@ -5,17 +5,6 @@ const VITE_BASE_URL_CLIENT = process.env.NEXT_PUBLIC_BASE_URL_CLIENT || {};
 // API URL
 export const API_URL = `${VITE_BASE_URL_SERVER}/api/v1` as string;
 
-// DOMAIN
-export const DOMAIN_BACKEND = `${VITE_BASE_URL_SERVER}` as string;
-
-export const DOMAIN_FRONTEND = `${VITE_BASE_URL_CLIENT}` as string;
-
-export const URL_OAUTH2_GOOGLE = `${DOMAIN_BACKEND}/oauth2/authorize/google?redirect_uri=` as string;
-export const URL_OAUTH2_GITHUB = `${DOMAIN_BACKEND}/oauth2/authorize/github?redirect_uri=` as string;
-export const URL_OAUTH2_FACEBOOK = `${DOMAIN_BACKEND}/oauth2/authorize/facebook?redirect_uri=` as string;
-
-export const URL_FRONTEND = `${DOMAIN_FRONTEND}/authentication/redirect`;
-
 // COMMON API
 export const PREFIX_API_COMMON = `${API_URL}/common` as string;
 

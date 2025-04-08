@@ -18,9 +18,9 @@ const teacherRoutes = [
 ];
 
 const studentRoutes = [
-    '/actor/student',
-    '/actor/student/class',
-    '/actor/student/config',
+    '/actor/learner',
+    '/actor/learner/class',
+    '/actor/learner/config',
 ];
 
 export async function middleware(request: NextRequest) {

@@ -1,28 +1,32 @@
-'use client'
-
 import "@/app/globals.scss";
 import {TanstackProvider} from "@/infrastructure/providers/TanstackProvider";
 import {ToastProvider} from "@/infrastructure/providers/context/ToastContext";
 import StoreProvider from "@/infrastructure/providers/StoreProvider";
+import {getLocale} from "next-intl/server";
+import {NextIntlClientProvider} from "next-intl";
 
-export default function RootLayout({children}: { children: React.ReactNode }) {
+export default async function RootLayout({children}: { children: React.ReactNode }) {
+
+    const locale = await getLocale();
 
     return (
-        <html lang="en">
+        <html lang={locale}>
         <head>
             <title>Smart Room</title>
         </head>
         <body className="scrollbar">
-        {/*StoreProvider*/}
-        <StoreProvider>
-            {/*tanstack for api*/}
-            <TanstackProvider>
-                {/*toast config*/}
-                <ToastProvider>
-                    {children}
-                </ToastProvider>
-            </TanstackProvider>
-        </StoreProvider>
+        <NextIntlClientProvider>
+            {/*StoreProvider*/}
+            <StoreProvider>
+                {/*tanstack for api*/}
+                <TanstackProvider>
+                    {/*toast config*/}
+                    <ToastProvider>
+                        {children}
+                    </ToastProvider>
+                </TanstackProvider>
+            </StoreProvider>
+        </NextIntlClientProvider>
         </body>
         </html>
     );

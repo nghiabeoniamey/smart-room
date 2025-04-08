@@ -115,21 +115,25 @@
 }
 
 @layer components {
-  @import '../infrastructure/ui/sass/type';
-  @import '../infrastructure/ui/sass/breadcrumb';
-  @import '../infrastructure/ui/sass/button';
-  @import '../infrastructure/ui/sass/form';
-  @import '../infrastructure/ui/sass/grid';
-  @import '../infrastructure/ui/sass/dropdown';
-  @import '../infrastructure/ui/sass/offcanvas';
-  @import '../infrastructure/ui/sass/badge';
-  @import '../infrastructure/ui/sass/pagination';
-  @import '../infrastructure/ui/sass/toast';
-  @import '../infrastructure/ui/sass/table';
-  @import '../infrastructure/ui/sass/accordion';
-  @import '../infrastructure/ui/sass/modal';
-  @import '../infrastructure/ui/sass/tabs';
-  @import '../infrastructure/ui/sass/sidebar';
+  @import '@/infrastructure/ui/sass/pages/login';
+  @import '@/infrastructure/ui/sass/pages/classes';
+  @import '@/infrastructure/ui/sass/pages/room';
+
+  @import '@/infrastructure/ui/sass/type';
+  @import '@/infrastructure/ui/sass/breadcrumb';
+  @import '@/infrastructure/ui/sass/button';
+  @import '@/infrastructure/ui/sass/form';
+  @import '@/infrastructure/ui/sass/grid';
+  @import '@/infrastructure/ui/sass/dropdown';
+  @import '@/infrastructure/ui/sass/offcanvas';
+  @import '@/infrastructure/ui/sass/badge';
+  @import '@/infrastructure/ui/sass/pagination';
+  @import '@/infrastructure/ui/sass/toast';
+  @import '@/infrastructure/ui/sass/table';
+  @import '@/infrastructure/ui/sass/accordion';
+  @import '@/infrastructure/ui/sass/modal';
+  @import '@/infrastructure/ui/sass/tabs';
+  @import '@/infrastructure/ui/sass/sidebar';
 
   .overflow-y-auto {
     overflow-y: overlay;

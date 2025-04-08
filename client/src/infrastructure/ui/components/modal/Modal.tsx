@@ -51,14 +51,20 @@ const CustomModal: React.FC<ModalProps> = ({
     return (
         <>
             <div className="fixed inset-0 bg-black opacity-50 z-40"></div>
-            <div
-                className="overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 bottom-0 z-50 justify-center
-            items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+            <div className="fixed top-0 right-0 left-0 bottom-0 z-50
+                            justify-center items-center w-full max-h-full
+                            md:inset-0 h-[calc(100%-1rem)]
+                            overflow-y-auto overflow-x-hidden"
+            >
                 <div className="relative p-4 h-full grid justify-center items-center w-full">
-                    <div className="relative bg-white rounded-lg shadow-xl " style={{width}}>
+                    <div className="relative rounded-lg shadow-xl
+                                    border-1 border-neutral-400 bg-neutral-50
+                                    dark:border-neutral-600 dark:bg-neutral-950"
+                         style={{width}}
+                    >
                         <div
                             className="flex items-center justify-between p-4 md:p-5 rounded-t">
-                            <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
+                            <h3 className="text-xl font-semibold">
                                 {title}
                             </h3>
                             <button

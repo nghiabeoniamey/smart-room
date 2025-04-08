@@ -2,7 +2,7 @@ import CustomModal from "@/infrastructure/ui/components/modal/Modal";
 import {ModalUProps} from "@/infrastructure/types/modal.type";
 import {Audio, sampleAudioList} from "@/infrastructure/types/audio.type";
 import {IconDownload, IconPlayerPause, IconPlayerPlay} from "@tabler/icons-react";
-import {useState} from "react";
+import React, {useState} from "react";
 
 export const AudioListModal = ({isOpen, onCancel, data}: ModalUProps<string>) => {
 
@@ -10,11 +10,14 @@ export const AudioListModal = ({isOpen, onCancel, data}: ModalUProps<string>) =>
 
     const defaultFooter = (
         <div className="py-3 px-4 text-right justify-end flex gap-4">
-            <button className="py-3 px-6 rounded-md border-1 hover:bg-[#2D8692] hover:border-[#2D8692] text-xs"
-                    onClick={onCancel}>
+            <button className="py-3 px-6 rounded-md text-xs bg-neutral-50 border-1 border-[#2D8692]
+                    text-[#2D8692] cursor-pointer
+                    hover:bg-[#2D8692] hover:text-neutral-50
+                " onClick={onCancel}>
                 Close
             </button>
         </div>
+
     );
 
     // processes data...

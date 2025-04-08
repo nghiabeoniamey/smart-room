@@ -1,0 +1,108 @@
+{
+  "Landing": {
+    "title": "Hello, This is Landing Page!",
+    "Auth": {
+      "title": "Welcome!, This is Authentication Page!",
+      "Common": {
+        "Header": {
+          "title": "This is Header",
+          "btnSignIn": "Sign In"
+        },
+        "Footer": {
+          "title": "This is Footer"
+        }
+      },
+      "Login": {
+        "form": {
+          "title": "Sign in",
+          "labelEmail": "Email",
+          "placeholderEmail": "Type your email here",
+          "labelPassword": "Password",
+          "placeholderPassword": "Type your password here",
+          "labelRememberMe": "Remember me?",
+          "btnLogin": "Login",
+          "btnGoogle": "Google"
+        },
+        "message": {
+          "validFills": "Please fill in all fields",
+          "validEmail": "Please enter a valid email address",
+          "err": "An unexpected error occurred"
+        }
+      }
+    },
+    "Actor": {
+      "Header": {
+        "title": "Welcome back!",
+        "account": {
+          "logout": "Logout",
+          "english": "English",
+          "vietnam": "Vietnamese"
+        }
+      },
+      "Teacher": {
+        "Sidebar": {
+          "btnCreate": "Create room",
+          "dashboard": "Dashboard",
+          "classes": "Classes",
+          "config": "Config"
+        },
+        "Dashboard": {
+          "title": "Dashboard Teacher..."
+        },
+        "Config": {
+          "title": "Config Teacher..."
+        },
+        "Classes": {
+          "title": "Live Rooms",
+          "placeholderSearch": "Search",
+          "copy": "Copy",
+          "message": {
+            "copy": {
+              "title": "Copied",
+              "description": "Code has been copied to clipboard: "
+            }
+          },
+          "incoming": {
+            "title": "Incoming"
+          },
+          "passed": {
+            "title": "Passed",
+            "record": "Audio record"
+          }
+        }
+      },
+      "Learner": {
+        "Sidebar": {
+          "btnJoin": "Join room",
+          "dashboard": "Dashboard",
+          "classes": "Classes",
+          "config": "Config"
+        },
+        "Dashboard": {
+          "title": "Dashboard Learner..."
+        },
+        "Config": {
+          "title": "Config Learner..."
+        },
+        "Classes": {
+          "title": "Live Rooms",
+          "placeholderSearch": "Search",
+          "copy": "Copy",
+          "message": {
+            "copy": {
+              "title": "Copied",
+              "description": "Code has been copied to clipboard: "
+            }
+          },
+          "incoming": {
+            "title": "Incoming"
+          },
+          "passed": {
+            "title": "Passed",
+            "record": "Audio record"
+          }
+        }
+      }
+    }
+  }
+}

@@ -8,6 +8,7 @@ import {login} from "@/infrastructure/stores/authSlice";
 import {ROLES} from "@/infrastructure/constants/role";
 import {useEffect} from "react";
 import {TOAST_TYPE} from "@/infrastructure/types/toast.type";
+import {URL_LEARNER, URL_TEACHER} from "@/infrastructure/constants/path";
 
 export default function RedirectPage() {
 
@@ -33,14 +34,11 @@ export default function RedirectPage() {
 
                 const userRole = user.roleCode;
                 switch (userRole) {
-                    case ROLES.ADMIN:
-                        router.push("/actor/admin");
-                        break;
                     case ROLES.TEACHER:
-                        router.push("/actor/teacher");
+                        router.push(URL_TEACHER);
                         break;
-                    case ROLES.STUDENT:
-                        router.push("/actor/student");
+                    case ROLES.LEARNER:
+                        router.push(URL_LEARNER);
                         break;
                     default:
                         break;

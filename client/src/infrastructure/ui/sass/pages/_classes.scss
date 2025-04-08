@@ -1,0 +1,78 @@
+.classes-container {
+  @apply mt-10 p-10 w-full;
+
+  &__title {
+    @apply text-3xl font-bold;
+  }
+
+  &__controls {
+    @apply my-4 text-sm flex justify-between items-center w-full;
+  }
+}
+
+.tab-list {
+  @apply flex flex-wrap -mb-px font-medium text-center;
+
+  &__item {
+    @apply me-2;
+  }
+
+  &__button {
+    @apply inline-block p-4 border-b-2 rounded-t-lg cursor-pointer text-gray-600 border-transparent
+    hover:text-[#2D8692] hover:border-[#2D8692] dark:text-neutral-300 dark:hover:text-[#2D8692];
+
+    &--active {
+      @apply text-[#2D8692] border-[#2D8692] dark:text-[#2D8692] dark:border-[#2D8692];
+    }
+  }
+}
+
+.search-box {
+  @apply flex justify-center items-center w-[14rem] h-[2.8rem] p-2 border border-neutral-700
+  space-x-4 rounded-xl text-neutral-700 bg-transparent dark:border-neutral-300 dark:text-neutral-300;
+
+  &__icon {
+    @apply h-6 w-6 opacity-100;
+  }
+
+  &__input {
+    @apply outline-none bg-transparent;
+  }
+}
+
+.rooms-container {
+  .rooms-section {
+    &--hidden {
+      @apply hidden;
+    }
+  }
+
+  .rooms-grid {
+    @apply grid gap-6 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1;
+  }
+}
+
+.room-card {
+  @apply grid gap-3 p-4 border border-neutral-300 rounded-lg shadow-sm hover:shadow-xl
+  bg-neutral-50 dark:bg-neutral-950 overflow-hidden;
+
+  &__header {
+    @apply flex items-center justify-between gap-3 font-bold text-neutral-900 dark:text-neutral-100;
+  }
+
+  &__audio-btn {
+    @apply flex items-center justify-end gap-1 cursor-pointer text-[0.8rem] text-neutral-600 dark:text-neutral-400;
+  }
+
+  &__content {
+    @apply grid gap-4 text-sm;
+  }
+
+  &__detail {
+    @apply flex items-center gap-3 text-neutral-900 dark:text-neutral-100;
+  }
+
+  &__copy-btn {
+    @apply text-[#2D8692] ml-1 cursor-pointer font-bold;
+  }
+}

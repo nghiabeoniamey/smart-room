@@ -2,177 +2,118 @@
 
 import {useState} from 'react';
 import {IRoom, sampleIRooms, sampleTPRooms, TABS, TPRoom} from "@/infrastructure/types/class.type";
-import {IconCalendarWeek, IconHourglassHigh, IconNumber, IconPlaylist} from "@tabler/icons-react";
 import {useToast} from "@/infrastructure/providers/context/ToastContext";
 import {POSITION, TOAST_TYPE} from "@/infrastructure/types/toast.type";
-import Link from "next/link";
 import {AudioListModal} from "@/infrastructure/components/teacher/AudioListModal";
+import {useTranslations} from "next-intl";
+import RoomCard from "@/infrastructure/components/common/RoomCard";
 
 export default function TeacherClassesPage() {
+    const t = useTranslations('Landing.Actor.Teacher.Classes')
     const [activeTab, setActiveTab] = useState(TABS.INCOMING);
     const {showToast} = useToast();
     const [roomId, setRoomId] = useState<string>('');
-
     const [iRooms, setIRooms] = useState<IRoom[]>(sampleIRooms);
     const [pRooms, setPRooms] = useState<TPRoom[]>(sampleTPRooms);
-
-    const copyClipboard = (code: string) => {
-        navigator.clipboard.writeText(code).then(() => {
-            showToast({
-                title: "Copied",
-                description: `Copy to clipboard: ${code}`,
-            }, TOAST_TYPE.INFO, 3000, POSITION.TOP_CENTER)
-        });
-    }
-
     const [isOpenModal, setIsOpenModal] = useState(false);
 
-    const handleCloseModal = () => {
-        setIsOpenModal(false);
+    async function copyClipboard(code: string) {
+        try {
+            await navigator.clipboard.writeText(code);
+            showToast({
+                title: t('message.copy.title'),
+                description: `${t('message.copy.description')} ${code}`,
+            }, TOAST_TYPE.INFO, 3000, POSITION.TOP_CENTER);
+        } catch (err) {
+            console.log(err);
+            showToast({
+                title: t('message.error.title'),
+                description: t('message.copy.error'),
+            }, TOAST_TYPE.WARNING, 3000, POSITION.TOP_CENTER);
+        }
     }
 
+    const handleCloseModal = () => setIsOpenModal(false);
     const handleOpenModal = (roomId: string) => {
         setRoomId(roomId);
         setIsOpenModal(true);
     }
 
     return (
-        <div className="mt-10 p-10 w-full">
-            <h1 className={"text-3xl text-black font-bold"}>Live Rooms</h1>
-            <div className="my-4 text-sm flex justify-between items-center w-full">
-                <ul className="flex flex-wrap -mb-px font-medium text-center" id="default-tab" role="tablist">
-                    <li className="me-2" role="presentation">
+        <div className="classes-container">
+            <h1 className="classes-container__title">{t('title')}</h1>
+
+            <div className="classes-container__controls">
+                <ul className="tab-list" role="tablist">
+                    <li className="tab-list__item" role="presentation">
                         <button
-                            className={`inline-block p-4 border-b-2 rounded-t-lg cursor-pointer ${
-                                activeTab === TABS.INCOMING
-                                    ? 'text-[#2D8692] border-[#2D8692] dark:text-[#2D8692] dark:border-[#2D8692]'
-                                    : 'text-gray-600 hover:text-[#2D8692] hover:border-[#2D8692] dark:hover:text-[#2D8692] border-transparent'
-                            }`}
+                            className={`tab-list__button ${activeTab === TABS.INCOMING ? 'tab-list__button--active' : ''}`}
                             onClick={() => setActiveTab(TABS.INCOMING)}
                             type="button"
                             role="tab"
                         >
-                            Incoming
+                            {t('incoming.title')}
                         </button>
                     </li>
-                    <li className="me-2" role="presentation">
+                    <li className="tab-list__item" role="presentation">
                         <button
-                            className={`inline-block p-4 border-b-2 rounded-t-lg cursor-pointer ${
-                                activeTab === TABS.PASSED
-                                    ? 'text-[#2D8692] border-[#2D8692] dark:text-[#2D8692] dark:border-[#2D8692]'
-                                    : 'text-gray-600 hover:text-[#2D8692] hover:border-[#2D8692] dark:hover:text-[#2D8692] border-transparent'
-                            }`}
+                            className={`tab-list__button ${activeTab === TABS.PASSED ? 'tab-list__button--active' : ''}`}
                             onClick={() => setActiveTab(TABS.PASSED)}
                             type="button"
                             role="tab"
                         >
-                            Passed
+                            {t('passed.title')}
                         </button>
                     </li>
                 </ul>
-                <div
-                    className="flex border-1 border-neutral-300 p-2 w-[14rem] h-[2.8rem] space-x-4 rounded-xl justify-center items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 opacity-100" fill="none"
-                         viewBox="0 0 24 24" stroke="currentColor">
+
+                <div className="search-box">
+                    <svg className="search-box__icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                         stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
                               d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
                     </svg>
-                    <input className="outline-none bg-transparent" type="text" placeholder="Search"/>
+                    <input className="search-box__input" type="text" placeholder="Search"/>
                 </div>
             </div>
-            <div id="tab-content">
+
+            <div className="rooms-container">
                 <div
-                    className={`${
-                        activeTab !== TABS.INCOMING && 'hidden'
-                    }`}
-                    id={TABS.INCOMING}
+                    className={`rooms-section ${activeTab !== TABS.INCOMING ? 'rooms-section--hidden' : ''}`}
                     role="tabpanel"
                 >
-                    <div className="grid gap-6 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1">
+                    <div className="rooms-grid">
                         {iRooms.map((room, index) => (
-                            <div key={index}
-                                 className="p-4 border grid gap-6 rounded-lg border-neutral-300 shadow-sm bg-white gap-3
-                                  grid-cols-1 hover:shadow-xl">
-                                <Link href={`/actor/teacher/class/` + room.code}
-                                      className="text-md truncate font-bold">{room.title}</Link>
-                                <div className="grid gap-4 text-sm">
-                                    <div className={"flex items-center gap-3"}>
-                                        <span><IconNumber/></span>
-                                        <span>
-                                            {room.code} -
-                                            <a
-                                                title='copy room code'
-                                                onClick={() => copyClipboard(room.code)}
-                                                className={"text-[#2D8692] border-[#2D8692] dark:text-[#2D8692] dark:border-[#2D8692] ml-1 cursor-pointer font-bold"}
-                                            >
-                                                Copy
-                                            </a>
-                                        </span>
-                                    </div>
-                                    <div className={"flex items-center gap-3"}>
-                                        <span><IconHourglassHigh/></span>
-                                        <span>{room.duration}'</span>
-                                    </div>
-                                    <div className={"flex items-center gap-3"}>
-                                        <span><IconCalendarWeek/></span>
-                                        <span>{room.date}</span>
-                                    </div>
-                                </div>
-                            </div>
+                            <RoomCard
+                                key={index}
+                                room={room}
+                                copyClipboard={copyClipboard}
+                                t={t}
+                            />
                         ))}
                     </div>
                 </div>
+
                 <div
-                    className={`${
-                        activeTab !== TABS.PASSED && 'hidden'
-                    }`}
-                    id={TABS.PASSED}
+                    className={`rooms-section ${activeTab !== TABS.PASSED ? 'rooms-section--hidden' : ''}`}
                     role="tabpanel"
                 >
-                    <div className="grid gap-6 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1">
+                    <div className="rooms-grid">
                         {pRooms.map((room, index) => (
-                            <div key={index}
-                                 className="p-4 border grid gap-6 rounded-lg border-neutral-300 shadow-sm bg-white gap-3
-                                  grid-cols-1 hover:shadow-xl">
-                                <div className={"flex items-center justify-between gap-3 font-bold"}>
-                                    <Link href={`/actor/teacher/class/` + room.code}
-                                          className="text-md truncate">{room.title}</Link>
-                                    <div
-                                        className={"flex items-center justify-end gap-1 w-[10rem] text-sm cursor-pointer"}
-                                        onClick={() => handleOpenModal(room.code)}
-                                    >
-                                        <span><IconPlaylist size={'1.2rem'} color={'#2D8692'}/></span>
-                                        <span className={"text-[0.8rem] text-neutral-600"}>Audio record</span>
-                                    </div>
-                                </div>
-                                <div className="grid gap-4 text-sm">
-                                    <div className={"flex items-center gap-3"}>
-                                        <span><IconNumber/></span>
-                                        <span>
-                                            {room.code} -
-                                            <a
-                                                title='copy room code'
-                                                onClick={() => copyClipboard(room.code)}
-                                                className={"text-[#2D8692] border-[#2D8692] dark:text-[#2D8692] dark:border-[#2D8692] ml-1 cursor-pointer font-bold"}
-                                            >
-                                                Copy
-                                            </a>
-                                        </span>
-                                    </div>
-                                    <div className={"flex items-center gap-3"}>
-                                        <span><IconHourglassHigh/></span>
-                                        <span>{room.duration}'</span>
-                                    </div>
-                                    <div className={"flex items-center gap-3"}>
-                                        <span><IconCalendarWeek/></span>
-                                        <span>{room.date}</span>
-                                    </div>
-                                </div>
-                            </div>
+                            <RoomCard
+                                key={index}
+                                room={room}
+                                copyClipboard={copyClipboard}
+                                t={t}
+                                onShowRecordings={handleOpenModal}
+                                showRecordings={true}
+                                showCode={false}
+                            />
                         ))}
                     </div>
                 </div>
             </div>
+
             <AudioListModal
                 isOpen={isOpenModal}
                 onCancel={handleCloseModal}

@@ -5,13 +5,18 @@ import Logo from "@/infrastructure/assets/icon/eduliveicon.svg";
 import {useState} from "react";
 import {LoginForm} from "@/infrastructure/services/api/authentication/authentication.api";
 import {useLogin} from "@/infrastructure/services/service/authentication/authentication.action";
-import {URL_FRONTEND, URL_OAUTH2_GOOGLE} from "@/infrastructure/constants/url";
 import {AxiosError} from "axios";
 import {useToast} from "@/infrastructure/providers/context/ToastContext";
 import {TOAST_TYPE} from "@/infrastructure/types/toast.type";
+import {URL_AUTH_REDIRECT} from "@/infrastructure/constants/path";
+import {useTranslations} from "next-intl";
 
 export default function Page() {
+
+    const t = useTranslations('Landing.Auth.Login');
+
     const {mutate: login, isPending} = useLogin();
+
     const [formData, setFormData] = useState<LoginForm>({
         email: '',
         password: '',
@@ -34,12 +39,12 @@ export default function Page() {
         setError(null);
 
         if (!formData.email || !formData.password) {
-            setError('Please fill in all fields');
+            setError(t('message.validFills'));
             return;
         }
 
         if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-            setError('Please enter a valid email address');
+            setError(t('message.errEmail'));
             return;
         }
 
@@ -54,7 +59,7 @@ export default function Page() {
                             },
                             TOAST_TYPE.SUCCESS
                         )
-                        window.location.href = `${URL_FRONTEND}?state=${result.data}`;
+                        window.location.href = `${URL_AUTH_REDIRECT}?state=${result.data}`;
                     }
                     if (result instanceof AxiosError) {
                         if (result?.response) {
@@ -81,24 +86,20 @@ export default function Page() {
                 },
             });
         } catch (err) {
-            setError(err instanceof Error ? err.message : 'An unexpected error occurred');
+            setError(err instanceof Error ? err.message : t('message.err'));
         }
     };
 
-    const handleLoginGoogle = () => {
-        console.log(
-            "URL_OAUTH2_GOOGLE + URL_FRONTEND",
-            URL_OAUTH2_GOOGLE + URL_FRONTEND
-        );
-        window.location.href = URL_OAUTH2_GOOGLE + URL_FRONTEND;
-    };
+    // const handleLoginGoogle = () => {
+    //     window.location.href = URL_OAUTH2_GOOGLE + URL_AUTH_REDIRECT;
+    // };
 
     return (
-        <div className="grid w-full h-[calc(100vh)] justify-center items-center pb-40">
-            <div className="grid gap-20">
-                <Image src={Logo} alt="logo EduLive" className="mx-auto"/>
-                <div className="p-6 form border-2 border-neutral-300 grid gap-8 rounded-xl w-[calc(28rem)]">
-                    <h1 className={"font-bold text-center text-3xl"}>Sign in</h1>
+        <div className="login-container">
+            <div className="login-sub-container">
+                <Image src={Logo} alt="EduLive" className="mx-auto"/>
+                <div className="form-container">
+                    <h1 className={"font-bold text-center text-3xl"}>{t('form.title')}</h1>
                     {error && (
                         <div className="p-3 bg-red-100 text-red-700 rounded-md text-sm">
                             {error}
@@ -106,7 +107,7 @@ export default function Page() {
                     )}
                     <form onSubmit={handleSubmit} className="rounded-xl grid gap-4 text-xs">
                         <div className="grid gap-1">
-                            <label htmlFor="email">Email</label>
+                            <label htmlFor="email">{t('form.labelEmail')}</label>
                             <input
                                 id="email"
                                 name="email"
@@ -114,11 +115,11 @@ export default function Page() {
                                 value={formData.email}
                                 onChange={handleChange}
                                 className="p-3 border-1 rounded-md"
-                                placeholder="Type your email here"
+                                placeholder={t('form.placeholderEmail')}
                             />
                         </div>
                         <div className="grid gap-1">
-                            <label htmlFor="password">Password</label>
+                            <label htmlFor="password">{t('form.labelPassword')}</label>
                             <input
                                 id="password"
                                 name="password"
@@ -126,7 +127,7 @@ export default function Page() {
                                 value={formData.password}
                                 onChange={handleChange}
                                 className="p-3 border-1 rounded-md"
-                                placeholder="Type your password here"
+                                placeholder={t('form.placeholderPassword')}
                             />
                         </div>
                         <div className="flex items-center justify-start gap-3">
@@ -145,14 +146,17 @@ export default function Page() {
                                              viewBox="0 0 20 20"
                                              fill="currentColor"
                                              stroke="currentColor" strokeWidth="1">
-                                            <path fillRule="evenodd"
-                                                  d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                                                  clipRule="evenodd"></path>
+                                            <path
+                                                fillRule="evenodd"
+                                                d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0
+                                                011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                                clipRule="evenodd"
+                                            ></path>
                                         </svg>
                                     </span>
                                 </label>
                             </div>
-                            <label htmlFor="rememberMe" className="cursor-pointer">Remember me?</label>
+                            <label htmlFor="rememberMe" className="cursor-pointer">{t('form.labelRememberMe')}</label>
                         </div>
                         <button
                             type="submit"
@@ -165,21 +169,26 @@ export default function Page() {
                                          fill="none" viewBox="0 0 24 24">
                                         <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor"
                                                 strokeWidth="4"></circle>
-                                        <path className="opacity-75" fill="currentColor"
-                                              d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                        <path
+                                            className="opacity-75"
+                                            fill="currentColor"
+                                            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0
+                                              014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
+
+                                        </path>
                                     </svg>
                                     Processing...
                                 </>
-                            ) : 'Login'}
+                            ) : (<>{t('form.btnLogin')}</>)}
                         </button>
-                        <button
-                            type="button"
-                            className="p-2 border-1 rounded-2xl text-gray-900"
-                            disabled={isPending}
-                            onClick={handleLoginGoogle}
-                        >
-                            Google
-                        </button>
+                        {/*<button*/}
+                        {/*    type="button"*/}
+                        {/*    className="p-2 border-1 rounded-2xl text-gray-900"*/}
+                        {/*    disabled={isPending}*/}
+                        {/*    onClick={handleLoginGoogle}*/}
+                        {/*>*/}
+                        {/*    <>{t('form.btnGoogle')}</>*/}
+                        {/*</button>*/}
                     </form>
                 </div>
             </div>

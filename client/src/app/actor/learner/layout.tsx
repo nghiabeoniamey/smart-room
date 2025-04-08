@@ -1,9 +1,9 @@
 'use client'
 
-import {StudentSidebar} from '@/infrastructure/components/student/Sidebar';
+import {LearnerSidebar} from '@/infrastructure/components/learner/Sidebar';
 import {ActorHeader} from "@/infrastructure/components/common/ActorHeader";
 
-export default function StudentLayout({
+export default function LearnerLayout({
                                           children,
                                       }: {
     children: React.ReactNode
@@ -11,7 +11,7 @@ export default function StudentLayout({
     return (
         <div className="flex">
             <ActorHeader/>
-            <StudentSidebar/>
+            <LearnerSidebar/>
             {children}
         </div>
     );

@@ -105,7 +105,7 @@ const Toast = ({message, type, duration, position, onClose, index = 0}: ToastPro
     return (
         <div
             className={`
-                fixed z-50 p-4 rounded shadow-lg max-w-xs min-w-1/4
+                fixed z-50 p-4 rounded shadow-lg max-w-fit min-w-1/4
                 ${getColor()}
                 ${getPosition()}
                 transition-all duration-500 ease-in-out

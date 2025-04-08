@@ -1,0 +1,53 @@
+.room-container {
+  @apply w-full h-[calc(100vh)] relative;
+
+  .canvas-area {
+    @apply absolute bg-neutral-100 w-full h-full z-10;
+  }
+
+  .room-content {
+    @apply relative w-full h-full z-20;
+
+    .controller-wrapper {
+      @apply w-full absolute bottom-0 flex justify-between items-center p-4 px-3;
+
+      .controller-group {
+        @apply flex justify-center items-center gap-6 p-2 px-6 w-fit
+        rounded-xl
+        text-center text-xs
+        text-neutral-50 bg-neutral-950
+
+        ;
+        .button-controller {
+          @apply grid justify-center items-center h-full cursor-pointer;
+
+          &.first {
+            @apply rounded-l-xl;
+          }
+
+          &.last {
+            @apply rounded-r-xl;
+          }
+
+          &.page-input {
+            @apply hover:bg-transparent cursor-default;
+
+            .input-wrapper {
+              @apply h-[24px] flex justify-center items-center;
+
+              input {
+                @apply bg-transparent appearance-none outline-none [appearance:textfield]
+                [&::-webkit-outer-spin-button]:appearance-none
+                [&::-webkit-inner-spin-button]:appearance-none
+                border-none w-6 text-center;
+              }
+            }
+          }
+          .icon-wrapper {
+            @apply flex justify-center cursor-pointer;
+          }
+        }
+      }
+    }
+  }
+}
