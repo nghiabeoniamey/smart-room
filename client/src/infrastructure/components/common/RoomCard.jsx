@@ -1,16 +1,6 @@
 import Link from "next/link";
 import {IconCalendarWeek, IconHourglassHigh, IconNumber, IconPlaylist} from "@tabler/icons-react";
-import {IRoom, TPRoom} from "@/infrastructure/types/class.type";
 import {URL_ROOM} from "@/infrastructure/constants/path";
-
-interface RoomCardProps {
-    room: IRoom | TPRoom;
-    copyClipboard: (code: string) => void;
-    t: (key: string) => string;
-    showRecordings?: boolean;
-    onShowRecordings?: (roomId: string) => void;
-    showCode?: boolean;
-}
 
 const RoomCard = ({
                       room,
@@ -19,7 +9,7 @@ const RoomCard = ({
                       showRecordings = false,
                       onShowRecordings,
                       showCode = true
-                  }: RoomCardProps) => (
+                  }) => (
     <div className="room-card">
         <div className="room-card__header">
             <Link href={URL_ROOM + `/${room.code}`} className="text-md truncate">

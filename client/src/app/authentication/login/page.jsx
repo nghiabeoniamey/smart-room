@@ -3,7 +3,6 @@
 import Image from "next/image";
 import Logo from "@/infrastructure/assets/icon/eduliveicon.svg";
 import {useState} from "react";
-import {LoginForm} from "@/infrastructure/services/api/authentication/authentication.api";
 import {useLogin} from "@/infrastructure/services/service/authentication/authentication.action";
 import {AxiosError} from "axios";
 import {useToast} from "@/infrastructure/providers/context/ToastContext";
@@ -17,16 +16,16 @@ export default function Page() {
 
     const {mutate: login, isPending} = useLogin();
 
-    const [formData, setFormData] = useState<LoginForm>({
+    const [formData, setFormData] = useState({
         email: '',
         password: '',
         rememberMe: false
     });
-    const [error, setError] = useState<string | null>(null);
+    const [error, setError] = useState(null);
 
     const {showToast} = useToast();
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleChange = (e) => {
         const {name, value, type, checked} = e.target;
         setFormData(prev => ({
             ...prev,
@@ -34,7 +33,7 @@ export default function Page() {
         }));
     };
 
-    const handleSubmit = async (e: React.FormEvent) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         setError(null);
 

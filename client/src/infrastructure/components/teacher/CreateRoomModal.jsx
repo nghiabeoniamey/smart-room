@@ -1,23 +1,16 @@
 import CustomModal from "@/infrastructure/ui/components/modal/Modal";
 import {useState} from "react";
-import {ModalCProps} from "@/infrastructure/types/modal.type";
 import {SaoStar} from "@/infrastructure/ui/components/star/SaoStar";
 
-interface Room {
-    name: string;
-    duration: number;
-    isRecording: boolean;
-}
+export const CreateRoomModal = ({isOpen, onCancel}) => {
 
-export const CreateRoomModal = ({isOpen, onCancel}: ModalCProps) => {
-
-    const [formData, setFormData] = useState<Room>({
+    const [formData, setFormData] = useState({
         name: '',
         duration: 60,
         isRecording: true,
     });
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleChange = (e) => {
         const {name, value, type, checked} = e.target;
         setFormData(prev => ({
             ...prev,
@@ -25,7 +18,7 @@ export const CreateRoomModal = ({isOpen, onCancel}: ModalCProps) => {
         }));
     }
 
-    const handleSubmit = async (e: React.FormEvent) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         // validate
         try {

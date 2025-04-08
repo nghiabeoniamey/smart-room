@@ -22,7 +22,7 @@ export default function RedirectPage() {
     useEffect(() => {
         if (state) {
             try {
-                const decodedState = atob(state as string);
+                const decodedState = atob(state);
                 const {accessToken, refreshToken} = JSON.parse(decodedState);
                 const user = getUserInformation(accessToken);
 

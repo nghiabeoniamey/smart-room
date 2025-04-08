@@ -5,7 +5,7 @@ import StoreProvider from "@/infrastructure/providers/StoreProvider";
 import {getLocale} from "next-intl/server";
 import {NextIntlClientProvider} from "next-intl";
 
-export default async function RootLayout({children}: { children: React.ReactNode }) {
+export default async function RootLayout({children}) {
 
     const locale = await getLocale();
 

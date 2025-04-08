@@ -16,9 +16,9 @@ import {
     IconUsersGroup
 } from "@tabler/icons-react";
 
-export default function TeacherRoomPage({roomId}: { roomId: string }) {
+export default function TeacherRoomPage({roomId}) {
 
-    const canvasRef = useRef<HTMLCanvasElement>(null);
+    const canvasRef = useRef(null);
     const [isMicrophone, setIsMicrophone] = useState(false);
     const [isDropdownMicrophone, setIsDropdownMicrophone] = useState(false)
     const [isCamera, setIsCamera] = useState(false)

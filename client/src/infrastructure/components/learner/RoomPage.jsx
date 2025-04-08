@@ -12,9 +12,9 @@ import {
     IconTools
 } from "@tabler/icons-react";
 
-export default function LearnerRoomPage({roomId}: { roomId: string }) {
+export default function LearnerRoomPage({roomId}) {
 
-    const canvasRef = useRef<HTMLCanvasElement>(null);
+    const canvasRef = useRef(null);
     const [isMicrophone, setIsMicrophone] = useState(false)
     const [isCamera, setIsCamera] = useState(false)
 

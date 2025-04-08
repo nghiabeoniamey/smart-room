@@ -1,12 +1,11 @@
 import CustomModal from "@/infrastructure/ui/components/modal/Modal";
-import {ModalUProps} from "@/infrastructure/types/modal.type";
-import {Audio, sampleAudioList} from "@/infrastructure/types/audio.type";
+import {sampleAudioList} from "@/infrastructure/types/audio.type";
 import {IconDownload, IconPlayerPause, IconPlayerPlay} from "@tabler/icons-react";
 import React, {useState} from "react";
 
-export const AudioListModal = ({isOpen, onCancel, data}: ModalUProps<string>) => {
+export const AudioListModal = ({isOpen, onCancel, data}) => {
 
-    const [audioList, setAudioList] = useState<Audio[]>(sampleAudioList);
+    const [audioList, setAudioList] = useState(sampleAudioList);
 
     const defaultFooter = (
         <div className="py-3 px-4 text-right justify-end flex gap-4">
@@ -22,14 +21,14 @@ export const AudioListModal = ({isOpen, onCancel, data}: ModalUProps<string>) =>
 
     // processes data...
 
-    const handleDownloadAudio = (download: string) => {
+    const handleDownloadAudio = (download) => {
         console.log(download);
         // processes download
     }
 
     // active
 
-    const handlePlayAudio = (audio: Audio) => {
+    const handlePlayAudio = (audio) => {
         // processes audio
     }
 

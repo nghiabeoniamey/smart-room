@@ -14,12 +14,12 @@ export default function LearnerClassesPage() {
 
     const [activeTab, setActiveTab] = useState(TABS.INCOMING);
     const {showToast} = useToast();
-    const [roomId, setRoomId] = useState<string>('');
+    const [roomId, setRoomId] = useState('');
 
-    const [iRooms, setIRooms] = useState<IRoom[]>(sampleIRooms);
-    const [pRooms, setPRooms] = useState<IRoom[]>(sampleSPRooms);
+    const [iRooms, setIRooms] = useState(sampleIRooms);
+    const [pRooms, setPRooms] = useState(sampleSPRooms);
 
-    async function copyClipboard(code: string) {
+    async function copyClipboard(code) {
         try {
             await navigator.clipboard.writeText(code);
             showToast({
@@ -41,7 +41,7 @@ export default function LearnerClassesPage() {
         setIsOpenModal(false);
     }
 
-    const handleOpenModal = (roomId: string) => {
+    const handleOpenModal = (roomId) => {
         setRoomId(roomId);
         setIsOpenModal(true);
     }

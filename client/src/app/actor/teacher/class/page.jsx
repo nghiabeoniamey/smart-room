@@ -1,7 +1,7 @@
 'use client'
 
 import {useState} from 'react';
-import {IRoom, sampleIRooms, sampleTPRooms, TABS, TPRoom} from "@/infrastructure/types/class.type";
+import {sampleIRooms, sampleTPRooms, TABS} from "@/infrastructure/types/class.type";
 import {useToast} from "@/infrastructure/providers/context/ToastContext";
 import {POSITION, TOAST_TYPE} from "@/infrastructure/types/toast.type";
 import {AudioListModal} from "@/infrastructure/components/teacher/AudioListModal";
@@ -12,12 +12,12 @@ export default function TeacherClassesPage() {
     const t = useTranslations('Landing.Actor.Teacher.Classes')
     const [activeTab, setActiveTab] = useState(TABS.INCOMING);
     const {showToast} = useToast();
-    const [roomId, setRoomId] = useState<string>('');
-    const [iRooms, setIRooms] = useState<IRoom[]>(sampleIRooms);
-    const [pRooms, setPRooms] = useState<TPRoom[]>(sampleTPRooms);
+    const [roomId, setRoomId] = useState('');
+    const [iRooms, setIRooms] = useState(sampleIRooms);
+    const [pRooms, setPRooms] = useState(sampleTPRooms);
     const [isOpenModal, setIsOpenModal] = useState(false);
 
-    async function copyClipboard(code: string) {
+    async function copyClipboard(code) {
         try {
             await navigator.clipboard.writeText(code);
             showToast({
@@ -34,7 +34,7 @@ export default function TeacherClassesPage() {
     }
 
     const handleCloseModal = () => setIsOpenModal(false);
-    const handleOpenModal = (roomId: string) => {
+    const handleOpenModal = (roomId) => {
         setRoomId(roomId);
         setIsOpenModal(true);
     }

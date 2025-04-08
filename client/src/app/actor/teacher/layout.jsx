@@ -3,11 +3,7 @@
 import {TeacherSidebar} from "@/infrastructure/components/teacher/Sidebar";
 import {ActorHeader} from "@/infrastructure/components/common/ActorHeader";
 
-export default function TeacherLayout({
-                                          children,
-                                      }: {
-    children: React.ReactNode
-}) {
+export default function TeacherLayout({children,}) {
     return (
         <div className="flex">
             <ActorHeader/>

@@ -12,7 +12,7 @@ import {IconLogout2} from "@tabler/icons-react";
 import {logout} from "@/infrastructure/stores/authSlice";
 import {useDispatch} from "react-redux";
 import {setUserLocale} from "@/i18n/locale";
-import {Locale, locales} from "@/i18n/config";
+import {locales} from "@/i18n/config";
 import {useTranslations} from "next-intl";
 import {URL_AUTH_LOGIN} from "@/infrastructure/constants/path";
 
@@ -20,7 +20,7 @@ export const ActorHeader = () => {
 
     const t = useTranslations('Landing.Actor.Header');
 
-    const [isRender, setIsRender] = useState<boolean>(false);
+    const [isRender, setIsRender] = useState(false);
     const router = useRouter();
     const dispatch = useDispatch();
     const {user, isAuthenticated} = useAuth();
@@ -31,7 +31,7 @@ export const ActorHeader = () => {
         dispatch(logout());
     }, [dispatch, router]);
 
-    const handleChangeLanguage = (type: Locale) => {
+    const handleChangeLanguage = (type) => {
         setUserLocale(type).then(() => {
 
         })
