@@ -1,10 +1,9 @@
 'use client'
 
 import {useState} from 'react';
-import {IRoom, sampleIRooms, sampleSPRooms, TABS} from "@/infrastructure/types/class.type";
+import {sampleIRooms, sampleSPRooms, TABS} from "@/infrastructure/types/class.type";
 import {useToast} from "@/infrastructure/providers/context/ToastContext";
 import {POSITION, TOAST_TYPE} from "@/infrastructure/types/toast.type";
-import {AudioListModal} from "@/infrastructure/components/teacher/AudioListModal";
 import {useTranslations} from "next-intl";
 import RoomCard from "@/infrastructure/components/common/RoomCard";
 
@@ -85,40 +84,6 @@ export default function LearnerClassesPage() {
             </div>
 
             <div id="rooms-container">
-                {/*<div*/}
-                {/*    className={`${activeTab !== TABS.INCOMING && 'hidden'}`}*/}
-                {/*    id={TABS.INCOMING}*/}
-                {/*    role="tabpanel"*/}
-                {/*>*/}
-                {/*    <div className="grid gap-6 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1">*/}
-                {/*        {iRooms.map((room, index) => (*/}
-                {/*            <RoomCard*/}
-                {/*                key={index}*/}
-                {/*                room={room}*/}
-                {/*                copyClipboard={copyClipboard}*/}
-                {/*                t={t}*/}
-                {/*            />*/}
-                {/*        ))}*/}
-                {/*    </div>*/}
-                {/*</div>*/}
-                {/*<div*/}
-                {/*    className={`${activeTab !== TABS.PASSED && 'hidden'}`}*/}
-                {/*    id={TABS.PASSED}*/}
-                {/*    role="tabpanel"*/}
-                {/*>*/}
-                {/*    <div className="grid gap-6 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1">*/}
-                {/*        {pRooms.map((room, index) => (*/}
-                {/*            <RoomCard*/}
-                {/*                key={index}*/}
-                {/*                room={room}*/}
-                {/*                copyClipboard={copyClipboard}*/}
-                {/*                t={t}*/}
-                {/*                showRecordings={false}*/}
-                {/*                showCode={false}*/}
-                {/*            />*/}
-                {/*        ))}*/}
-                {/*    </div>*/}
-                {/*</div>*/}
                 <div className="rooms-container">
                     <div
                         className={`rooms-section ${activeTab !== TABS.INCOMING ? 'rooms-section--hidden' : ''}`}
@@ -156,11 +121,6 @@ export default function LearnerClassesPage() {
                     </div>
                 </div>
             </div>
-            <AudioListModal
-                isOpen={isOpenModal}
-                onCancel={handleCloseModal}
-                data={roomId}
-            />
         </div>
     );
 }

@@ -4,7 +4,7 @@ import {useState} from 'react';
 import {sampleIRooms, sampleTPRooms, TABS} from "@/infrastructure/types/class.type";
 import {useToast} from "@/infrastructure/providers/context/ToastContext";
 import {POSITION, TOAST_TYPE} from "@/infrastructure/types/toast.type";
-import {AudioListModal} from "@/infrastructure/components/teacher/AudioListModal";
+import {AudioListModal} from "@/infrastructure/components/teacher/class/AudioListModal";
 import {useTranslations} from "next-intl";
 import RoomCard from "@/infrastructure/components/common/RoomCard";
 

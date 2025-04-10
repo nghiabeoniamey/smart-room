@@ -24,7 +24,7 @@ export default function LearnerRoomPage({roomId}) {
 
             <div className="room-content">
                 <div className="controller-wrapper">
-                    <div className="controller-group">
+                    <div className="group-controller">
                         <div className="button-controller first">
                             <span className="icon-wrapper">
                                 <IconPresentation/>
@@ -58,7 +58,7 @@ export default function LearnerRoomPage({roomId}) {
                             <span>Next</span>
                         </div>
                     </div>
-                    <div className="controller-group">
+                    <div className="group-controller">
                         <div className="button-controller first">
                             <span className="icon-wrapper">
                                 <IconReplace/>
@@ -90,26 +90,6 @@ export default function LearnerRoomPage({roomId}) {
                             <span>Camera</span>
                         </div>
                     </div>
-                    {/*<div className="controller-group">*/}
-                    {/*    <div className="button-controller first">*/}
-                    {/*        <span className="icon-wrapper">*/}
-                    {/*            <IconPresentation/>*/}
-                    {/*        </span>*/}
-                    {/*        <span>Invite</span>*/}
-                    {/*    </div>*/}
-                    {/*    <div className="button-controller">*/}
-                    {/*        <span className="icon-wrapper">*/}
-                    {/*            <IconChevronLeft/>*/}
-                    {/*        </span>*/}
-                    {/*        <span>Participants</span>*/}
-                    {/*    </div>*/}
-                    {/*    <div className="button-controller last">*/}
-                    {/*        <span className="icon-wrapper">*/}
-                    {/*            <IconChevronRight/>*/}
-                    {/*        </span>*/}
-                    {/*        <span>Chat</span>*/}
-                    {/*    </div>*/}
-                    {/*</div>*/}
                 </div>
             </div>
         </div>

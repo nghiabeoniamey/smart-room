@@ -5,7 +5,7 @@ import Link from "next/link";
 import Logo from "@/infrastructure/assets/icon/edulivelighticon.svg";
 import Image from "next/image";
 import {IconChalkboard, IconHome, IconPlus, IconSettings} from "@tabler/icons-react";
-import {CreateRoomModal} from "@/infrastructure/components/teacher/CreateRoomModal";
+import {CreateRoomModal} from "@/infrastructure/components/teacher/class/CreateRoomModal";
 import {useState} from "react";
 import {useTranslations} from "next-intl";
 import {URL_TEACHER, URL_TEACHER_CLASS, URL_TEACHER_CONFIG} from "@/infrastructure/constants/path";

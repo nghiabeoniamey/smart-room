@@ -6,7 +6,7 @@ import Image from "next/image";
 import Logo from "@/infrastructure/assets/icon/edulivelighticon.svg";
 import {IconChalkboard, IconHome, IconLogin2, IconSettings} from "@tabler/icons-react";
 import {useState} from "react";
-import {JoinRoomModal} from "@/infrastructure/components/learner/JoinRoomModal";
+import {JoinRoomModal} from "@/infrastructure/components/learner/class/JoinRoomModal";
 import {URL_LEARNER, URL_LEARNER_CLASS, URL_LEARNER_CONFIG,} from "@/infrastructure/constants/path";
 import {useTranslations} from "next-intl";
 

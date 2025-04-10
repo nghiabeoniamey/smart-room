@@ -23,13 +23,10 @@ export default function RoomPage({params}) {
     }, [isAuthenticated, user?.roleCode]);
 
     return (
-        isTeacher ?
-            <TeacherRoomPage
-                roomId={slug}
-            />
-            :
-            <LearnerRoomPage
-                roomId={slug}
-            />
+        isTeacher === null ? <canvas className="canvas-area"/> :
+            (isTeacher ?
+                <TeacherRoomPage roomId={slug}/>
+                :
+                <LearnerRoomPage roomId={slug}/>)
     );
 }
